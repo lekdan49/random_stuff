@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import os
 
 WebbSite = input("Please Enter the website or IP address you want me to ping! ")
@@ -8,7 +9,8 @@ class DannMann:
 
 
 def faggbird():
-    DannMann.fagbird
+    DannMann.fagbird()
 
 
 faggbird()
+
