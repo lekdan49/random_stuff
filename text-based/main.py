@@ -12,7 +12,7 @@ def initialize_character():
     return character
 
 
-def get_input():
+def get_combat_input():
     choice = input("Do you want to 'attack', 'defend' or try to 'flee'?\n")
     if choice == 'attack':
         return 0
@@ -55,7 +55,7 @@ def combat_loop(player_char, monster):
     elif monster_move == 0:
         print("The", monster.name, "is defending itself this turn! \n")
     if player_char.health > 1 and monster.health > 0:
-        player_move = get_input()
+        player_move = get_combat_input()
         if player_move == 0:
             attack(player_char, monster, monster_move)
         elif player_move == 1:
@@ -102,7 +102,8 @@ def attack(player_char, monster, monster_move):
 
     if monster_move == 0:
         # apply damage to class through method
-        monster.take_damage(damage_given / 2)
+        damage_given = math.ceil(damage_given / 2)
+        monster.take_damage(damage_given)
 
     elif monster_move == 1:
         # apply damage to class through method
