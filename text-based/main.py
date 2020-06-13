@@ -2,7 +2,7 @@ import random
 import math
 from classes import Game
 from classes import Monsters
-
+from monsters import *
 
 def initialize_character():
     # name = input("Please enter your name! ")
@@ -30,21 +30,12 @@ def combat_begin(monster):
     monster.health = math.ceil(monster.health)
 
     print("The", monster.name, "has", monster.health,
-          'health and is about to attack!')
+          'health and is preparing to attack!')
 
     result = combat_loop(player_char, monster)
 
     return result
 
-
-def monster_encounter(player_char):
-    monster = Monsters('slime', player_char.health * 2, 20, 40, 20, 1, 1)
-    combat_begin(monster)
-
-
-def monster_encounter_2(player_char):
-    monster = Monsters('dragon', player_char.health * 1.2, 20, 40, 20, 2, 1)
-    combat_begin(monster)
 
 
 def combat_loop(player_char, monster):
@@ -121,9 +112,7 @@ def flee(player_char, monster):
 if __name__ == '__main__':
 
     player_char = initialize_character()
-
-    monster_encounter(player_char)
-
-    monster_encounter_2(player_char)
+    combat_begin(monster_1)
+    combat_begin(monster_2)
 
     print(player_char.health)
