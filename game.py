@@ -16,12 +16,14 @@ class Game():
 
 
 class Monsters():
-    def __init__(self, name, health, attack, defence, scare):
+    def __init__(self, name, health, attack, defence, scare, monster_id, monster_status):
         self.name = name
         self.health = health
         self.attack = attack
         self.defence = defence
         self.scare = scare
+        self.monster_id = monster_id
+        self.monster_status = monster_status    # 0 = dead, 1 = alive
 
     def take_damage(self, damage):
         damage_value = (self.health + damage) - self.health
@@ -48,26 +50,28 @@ def get_input():
         return 5
 
 
-def monster_encounter(player_char):
-    monster = Monsters('slime', player_char.health * 2, 20, 40, 20)
+def combat_begin(monster):
+    print("A", monster.name, "has appeared!")
+
     # round monster health up to whole number
     monster.health = math.ceil(monster.health)
-    print("A", monster.name, "has appeared!")
+
     print("The", monster.name, "has", monster.health,
           'health and is about to attack!')
+
     result = combat_loop(player_char, monster)
+
     return result
+
+
+def monster_encounter(player_char):
+    monster = Monsters('slime', player_char.health * 2, 20, 40, 20, 1, 1)
+    combat_begin(monster)
 
 
 def monster_encounter_2(player_char):
-    monster = Monsters('dragon', player_char.health * 1.2, 20, 40, 20)
-    # round monster health up to whole number
-    monster.health = math.ceil(monster.health)
-    print("A", monster.name, "has appeared!")
-    print("The", monster.name, "has", monster.health,
-          'health and is about to attack!')
-    result = combat_loop(player_char, monster)
-    return result
+    monster = Monsters('dragon', player_char.health * 1.2, 20, 40, 20, 2, 1)
+    combat_begin(monster)
 
 
 def combat_loop(player_char, monster):
@@ -86,6 +90,7 @@ def combat_loop(player_char, monster):
 
     elif monster.health <= 0:
         print("Monster dead\n")
+        monster.monster_status = 0
         return 1
 
     elif player_char.health <= 0:
