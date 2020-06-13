@@ -6,9 +6,9 @@ from classes import Monsters
 
 def initialize_character():
     # name = input("Please enter your name! ")
-    name = 'Dan Gun'
-    dan = Game(name, 100, 10, 5)
-    return dan
+    name = 'name here'
+    character = Game(name, 100, 10, 5)
+    return character
 
 
 def get_input():
