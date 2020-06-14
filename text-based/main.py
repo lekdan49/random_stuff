@@ -85,7 +85,7 @@ def crit_test(player_char, monster, damage_given, damage_taken, monster_move):
         print("You hit a critical strike! \n")
         damage_given = damage_given * 20
 
-    if monster_crit > 80 and monster_move == 1:
+    if monster_crit > monster.monster_crit_rate and monster_move == 1:
         print("The", monster.name, "hits a critical strike! \n")
         damage_taken = damage_taken * 2
 
