@@ -9,8 +9,6 @@ class Game():
         damage_value = (self.health + damage) - self.health
         self.health = self.health - damage
         return(damage_value)
-    
-    
 
 
 class Monsters(Game):
@@ -21,5 +19,4 @@ class Monsters(Game):
         self.monster_id = monster_id
         self.monster_status = monster_status    # 0 = dead, 1 = alive
         self.monster_crit_rate = monster_crit_rate
-
 
